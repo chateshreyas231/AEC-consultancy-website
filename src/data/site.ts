@@ -1,3 +1,9 @@
+import {
+	Cpu,
+	Layers,
+	ShieldCheck,
+	Workflow,
+} from "lucide-react";
 // Centralised site content and arrays for reuse across pages/components
 
 export const industries = [
@@ -111,6 +117,52 @@ export const projects = [
   },
 ];
 
+export const solutions = [
+	{
+		title: "Project Delivery OS",
+		description:
+			"A unified workspace that automates schedules, risk surfacing, and progress communications for capital programmes.",
+		icon: Workflow,
+		badge: "Automation",
+		highlights: [
+			"AI lookahead planning and resource balancing",
+			"Executive wallboards with live KPIs and narratives",
+		],
+	},
+	{
+		title: "Intelligent Asset Ops",
+		description:
+			"Digital twins and telemetry-driven monitoring to keep high-value assets observable and predictable.",
+		icon: Layers,
+		badge: "Digital twin",
+		highlights: [
+			"Model sync with Autodesk Construction Cloud and Revit",
+			"Sensor fusion dashboards with anomaly alerting",
+		],
+	},
+	{
+		title: "AI Copilots for Design & Field",
+		description:
+			"Assistive copilots that draft, summarise, and triage work for designers, estimators, and field teams.",
+		icon: Cpu,
+		badge: "AI copilots",
+		highlights: [
+			"Natural-language RFI routing and synthesis",
+			"Generative concept exploration and design automation",
+		],
+	},
+	{
+		title: "Governed Data Platform",
+		description:
+			"A secure data estate spanning project, financial, and operational sources with governance baked in.",
+		icon: ShieldCheck,
+		badge: "Data trust",
+		highlights: [
+			"Curated data products with lineage and stewardship",
+			"Policy-based access, audit trails, and compliance packs",
+		],
+	},
+];
 export const resources = [
   {
     title: "Playbook: AI in preconstruction",

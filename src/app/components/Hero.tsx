@@ -38,13 +38,13 @@ export default function Hero() {
       <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-16 px-6 text-center">
         <div className="glass-panel border border-white/10 px-8 py-12 shadow-2xl">
           <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-sm font-medium text-blue-100">
-            <Sparkles className="h-4 w-4" /> AI-Driven AEC Innovation
+            <Sparkles className="h-4 w-4" /> AI-Driven SME Solutions
           </p>
           <h1 className="text-balance text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl md:text-6xl">
-            Crafted strategies and products for bold, data-led AEC teams.
+            Crafted strategies and solutions for bold, data-led teams.
           </h1>
           <p className="mt-6 text-lg text-slate-200/80 md:text-xl">
-            From BIM adoption to intelligent automation, we align architecture, engineering, and construction operations with modern AI ecosystems.
+            We provide intelligent automation and conversational agentic solutions to supercharge workflows, reduce risk, and unlock new value across your organisation.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -52,14 +52,14 @@ export default function Hero() {
               href="#contact"
               className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-7 py-3 text-base font-semibold text-white shadow-lg shadow-sky-500/40 transition hover:scale-[1.02] hover:shadow-indigo-500/40"
             >
-              Start a project
+              Get a proposal
               <ArrowRight className="h-5 w-5" />
             </a>
             <a
               href="#case-studies"
               className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-3 text-base font-semibold text-white/80 transition hover:border-white/40 hover:text-white"
             >
-              Browse case studies
+              Read case studies
             </a>
           </div>
         </div>
@@ -69,22 +69,22 @@ export default function Hero() {
             <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-sky-500/20 text-sky-200">
               <Gauge className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-semibold text-white">Operational velocity</h3>
+            <h3 className="text-lg font-semibold text-white">AI-powered Automation</h3>
             <p className="mt-2 text-sm text-slate-200/70">Automations that remove repetitive design handoffs and accelerate delivery pipelines.</p>
           </div>
           <div className="glass-panel-light border border-white/20 p-6">
             <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-indigo-500/20 text-indigo-200">
-              <ShieldCheck className="h-6 w-6" />
+              <Sparkles className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-semibold text-white">Risk-aware platforms</h3>
-            <p className="mt-2 text-sm text-slate-200/70">Audit-ready data estates, governance, and secure infrastructure for critical projects.</p>
+            <h3 className="text-lg font-semibold text-white">Conversational Agents</h3>
+            <p className="mt-2 text-sm text-slate-200/70">Assistive copilots and workflows that amplify expert decision making across teams.</p>
           </div>
           <div className="glass-panel-light border border-white/20 p-6">
             <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500/20 text-cyan-100">
-              <Sparkles className="h-6 w-6" />
+              <ShieldCheck className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-semibold text-white">Human + AI collaboration</h3>
-            <p className="mt-2 text-sm text-slate-200/70">Assistive copilots and workflows that amplify expert decision making across teams.</p>
+            <h3 className="text-lg font-semibold text-white">Risk Mitigation</h3>
+            <p className="mt-2 text-sm text-slate-200/70">Solutions that reduce risk and ensure compliance in complex workflows.</p>
           </div>
         </div>
       </div>

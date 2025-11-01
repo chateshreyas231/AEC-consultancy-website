@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AEC Consultancy - Architecture, Engineering & Construction Solutions",
-  description: "Professional AEC consultancy services specializing in workflow automation, BIM implementation, and digital transformation for architecture, engineering, and construction firms.",
+  title: "Microlith - AI Solutions",
+  description: "AI consultancy services specializing in workflow automation, digital transformation specializing in SMEs.",
 };
 
 export default function RootLayout({
