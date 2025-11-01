@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #020617;
+  --foreground: #e2e8f0;
 }
 
 @theme inline {
@@ -12,15 +12,61 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  background: radial-gradient(120% 120% at 10% 20%, rgba(59, 130, 246, 0.18), transparent 60%), radial-gradient(140% 140% at 80% 0%, rgba(147, 51, 234, 0.18), transparent 62%), var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans, "Inter", "Segoe UI", sans-serif);
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -35vh -35vh;
+  background: radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.35), transparent 55%), radial-gradient(circle at 80% 10%, rgba(147, 197, 253, 0.25), transparent 55%), radial-gradient(circle at 60% 80%, rgba(56, 189, 248, 0.18), transparent 60%);
+  filter: blur(80px);
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.glass-panel {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.45));
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 1.25rem;
+  box-shadow: 0px 25px 70px rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(18px);
+}
+
+.glass-panel-light {
+  background: linear-gradient(135deg, rgba(226, 232, 240, 0.28), rgba(248, 250, 252, 0.1));
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 1rem;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.28);
+}
+
+.floating-shape {
+  animation: float 16s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) scale(1.05);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

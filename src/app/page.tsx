@@ -1,614 +1,409 @@
-import Image from "next/image";
-import { 
-  Building2, 
-  Users, 
-  Zap, 
-  Star, 
-  ArrowRight, 
-  CheckCircle,
-  Code,
-  Database,
-  Cloud,
-  BarChart3,
-  Globe,
-  Shield
+import {
+	ArrowUpRight,
+	Building2,
+	Cpu,
+	Layers,
+	LineChart,
+	ShieldCheck,
+	Sparkles,
+	Workflow,
 } from "lucide-react";
+import Hero from "./components/Hero";
+import ClientCarousel from "./components/ClientCarousel";
+import Services from "./components/Services";
+import Chatbot from "./components/Chatbot";
+import ContactForm from "./components/ContactForm";
+import {
+	industries,
+	techHighlights,
+	aboutMetrics,
+	team,
+	testimonials,
+	projects,
+	resources,
+} from "../data/site";
+
+const solutions = [
+	{
+		title: "Project Delivery OS",
+		description:
+			"A unified workspace that automates schedules, risk surfacing, and progress communications for capital programmes.",
+		icon: Workflow,
+		badge: "Automation",
+		highlights: [
+			"AI lookahead planning and resource balancing",
+			"Executive wallboards with live KPIs and narratives",
+		],
+	},
+	{
+		title: "Intelligent Asset Ops",
+		description:
+			"Digital twins and telemetry-driven monitoring to keep high-value assets observable and predictable.",
+		icon: Layers,
+		badge: "Digital twin",
+		highlights: [
+			"Model sync with Autodesk Construction Cloud and Revit",
+			"Sensor fusion dashboards with anomaly alerting",
+		],
+	},
+	{
+		title: "AI Copilots for Design & Field",
+		description:
+			"Assistive copilots that draft, summarise, and triage work for designers, estimators, and field teams.",
+		icon: Cpu,
+		badge: "AI copilots",
+		highlights: [
+			"Natural-language RFI routing and synthesis",
+			"Generative concept exploration and design automation",
+		],
+	},
+	{
+		title: "Governed Data Platform",
+		description:
+			"A secure data estate spanning project, financial, and operational sources with governance baked in.",
+		icon: ShieldCheck,
+		badge: "Data trust",
+		highlights: [
+			"Curated data products with lineage and stewardship",
+			"Policy-based access, audit trails, and compliance packs",
+		],
+	},
+];
+
 
 export default function Home() {
-  return (
-    <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Building2 className="h-8 w-8 text-blue-600" />
-              <span className="ml-2 text-xl font-bold text-gray-900">AEC Consultancy</span>
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <a href="#services" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Services</a>
-                <a href="#tech-stack" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Tech Stack</a>
-                <a href="#team" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Team</a>
-                <a href="#testimonials" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Testimonials</a>
-                <a href="#projects" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-                <a href="#contact" className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700">Contact</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+	return (
+		<div className="relative min-h-screen overflow-hidden text-slate-100">
+			<nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-slate-950/60 backdrop-blur">
+				<div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+					<a href="#" className="flex items-center gap-2 text-white">
+						<div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-sky-200">
+							<Building2 className="h-5 w-5" />
+						</div>
+						<span className="text-base font-semibold tracking-wide">AEC Consultancy</span>
+					</a>
+					<div className="hidden items-center gap-6 text-sm font-medium text-white/70 md:flex">
+						<a href="#services" className="transition hover:text-white">Services</a>
+						<a href="#solutions" className="transition hover:text-white">Solutions</a>
+						<a href="#about" className="transition hover:text-white">About</a>
+						<a href="#resources" className="transition hover:text-white">Resources</a>
+						<a href="#case-studies" className="transition hover:text-white">Case studies</a>
+					</div>
+					<a
+						href="#contact"
+						className="hidden rounded-full bg-linear-to-r from-sky-500 to-indigo-500 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-sky-500/40 transition hover:shadow-indigo-500/40 md:inline-flex"
+					>
+						Let&apos;s talk
+					</a>
+				</div>
+			</nav>
 
-      {/* Hero Section */}
-      <section className="pt-20 pb-16 bg-gradient-to-br from-blue-50 to-indigo-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Transforming AEC with
-              <span className="text-blue-600"> Digital Innovation</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              We help architecture, engineering, and construction firms streamline their workflows, 
-              implement cutting-edge technology, and achieve unprecedented efficiency through automation.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center">
-                Get Started <ArrowRight className="ml-2 h-5 w-5" />
-              </button>
-              <button className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
-                View Our Work
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+			<main className="relative">
+				<div className="pt-16">
+					<Hero />
+				</div>
 
-      {/* Services Section */}
-      <section id="services" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Comprehensive solutions to modernize your AEC operations and boost productivity
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <Building2 className="h-6 w-6 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">BIM Implementation</h3>
-              <p className="text-gray-600 mb-4">
-                Complete Building Information Modeling setup and training for seamless project collaboration.
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  3D Modeling & Visualization
-                </li>
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  Clash Detection & Resolution
-                </li>
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  Team Training & Support
-                </li>
-              </ul>
-            </div>
+				<ClientCarousel />
 
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <Zap className="h-6 w-6 text-green-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Workflow Automation</h3>
-              <p className="text-gray-600 mb-4">
-                Custom automation solutions to eliminate repetitive tasks and accelerate project delivery.
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  Process Optimization
-                </li>
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  API Integration
-                </li>
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  Custom Scripts & Tools
-                </li>
-              </ul>
-            </div>
+				<Services />
 
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <BarChart3 className="h-6 w-6 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Project Management</h3>
-              <p className="text-gray-600 mb-4">
-                Advanced project management systems tailored for AEC industry requirements.
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  Resource Planning
-                </li>
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  Progress Tracking
-                </li>
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  Risk Management
-                </li>
-              </ul>
-            </div>
+				<section id="solutions" className="relative py-24">
+					<div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_60%)] bg-fixed" />
+					<div className="mx-auto max-w-6xl px-6">
+						<div className="text-center">
+							<span className="text-xs font-semibold uppercase tracking-[0.45em] text-sky-200/80">solutions</span>
+							<h2 className="mt-4 text-balance text-3xl font-bold text-white sm:text-4xl">
+								Productised accelerators tuned for data-led AEC teams
+							</h2>
+							<p className="mx-auto mt-4 max-w-3xl text-sm text-slate-200/75">
+								Modular building blocks you can adopt independently or as an end-to-end platform. Each comes with reference architectures, enablement, and measurable outcomes within weeks.
+							</p>
+						</div>
 
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                <Cloud className="h-6 w-6 text-orange-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Cloud Solutions</h3>
-              <p className="text-gray-600 mb-4">
-                Secure cloud infrastructure for seamless collaboration and data management.
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  Data Migration
-                </li>
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  Backup & Recovery
-                </li>
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  Scalable Infrastructure
-                </li>
-              </ul>
-            </div>
+						<div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+							{solutions.map(({ title, description, icon: Icon, badge, highlights }) => (
+								<article key={title} className="glass-panel-light group relative overflow-hidden border border-white/15 p-7 text-left">
+									<span className="inline-flex items-center rounded-full border border-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white/70">
+										{badge}
+									</span>
+									<div className="mt-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 text-white">
+										<Icon className="h-6 w-6" />
+									</div>
+									<h3 className="mt-4 text-lg font-semibold text-white">{title}</h3>
+									<p className="mt-3 text-sm text-slate-200/70">{description}</p>
+									<ul className="mt-6 space-y-2 text-sm text-slate-100/80">
+										{highlights.map((item) => (
+											<li key={item} className="flex items-start gap-2">
+												<Sparkles className="mt-0.5 h-4 w-4 text-sky-200" />
+												<span>{item}</span>
+											</li>
+										))}
+									</ul>
+								</article>
+							))}
+						</div>
+					</div>
+				</section>
 
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
-                <Shield className="h-6 w-6 text-red-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Security & Compliance</h3>
-              <p className="text-gray-600 mb-4">
-                Comprehensive security solutions to protect your sensitive project data.
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  Data Encryption
-                </li>
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  Access Controls
-                </li>
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  Compliance Auditing
-                </li>
-              </ul>
-            </div>
+				<section id="industries" className="relative py-24">
+					<div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(6,182,212,0.16),transparent_65%)] bg-fixed" />
+					<div className="mx-auto max-w-6xl px-6">
+						<div className="text-center">
+							<span className="text-xs font-semibold uppercase tracking-[0.45em] text-cyan-200/80">industries</span>
+							<h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">Deep domain experience across complex programmes</h2>
+							<p className="mx-auto mt-3 max-w-2xl text-sm text-slate-200/70">
+								We work with multi-disciplinary project teams delivering large scale assets, regulated environments, and high-visibility programmes.
+							</p>
+						</div>
+						<div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+							{industries.map((industry) => (
+								<div key={industry} className="glass-panel-light border border-white/15 px-4 py-5 text-center text-sm font-semibold text-white/85">
+									{industry}
+								</div>
+							))}
+						</div>
+					</div>
+				</section>
 
-            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                <Users className="h-6 w-6 text-indigo-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Training & Support</h3>
-              <p className="text-gray-600 mb-4">
-                Comprehensive training programs to maximize your team's potential with new technologies.
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  On-site Training
-                </li>
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  24/7 Technical Support
-                </li>
-                <li className="flex items-center text-sm text-gray-600">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                  Documentation & Resources
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+				<section id="tech-stack" className="relative py-24">
+					<div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(147,51,234,0.15),transparent_65%)] bg-fixed" />
+					<div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[1.1fr,0.9fr]">
+						<div>
+							<span className="text-xs font-semibold uppercase tracking-[0.45em] text-purple-200/80">tech stack</span>
+							<h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">A composable foundation for data and AI delivery</h2>
+							<p className="mt-3 max-w-3xl text-sm text-slate-200/70">
+								Opinionated selections and accelerators help your teams move fast while remaining secure, governable, and ready for enterprise scale.
+							</p>
+							<div className="mt-10 grid gap-4 sm:grid-cols-2">
+								{techHighlights.map(({ title, points }) => (
+									<div key={title} className="glass-panel-light border border-white/15 p-5 text-left">
+										<h3 className="text-sm font-semibold text-white">{title}</h3>
+										<ul className="mt-3 space-y-2 text-xs text-slate-200/70">
+											{points.map((point) => (
+												<li key={point}>{point}</li>
+											))}
+										</ul>
+									</div>
+								))}
+							</div>
+						</div>
+						<div className="glass-panel border border-white/15 p-8">
+							<h3 className="text-lg font-semibold text-white">Stack spotlight</h3>
+							<p className="mt-3 text-sm text-slate-200/75">
+								Integration blueprints and infrastructure as code pack quick-start patterns for your cloud of choice, reducing friction between IT, delivery, and operations teams.
+							</p>
+							<ul className="mt-6 space-y-3 text-sm text-slate-100/80">
+								<li>Reusable connectors for Autodesk Construction Cloud, Procore, Primavera, and ERP platforms.</li>
+								<li>Governed data product templates with lineage, quality checks, and observability baked in.</li>
+								<li>Secure landing zones with environment parity, automated compliance evidence, and access controls.</li>
+							</ul>
+						</div>
+					</div>
+				</section>
 
-      {/* Tech Stack Section */}
-      <section id="tech-stack" className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Technology Stack</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Cutting-edge tools and platforms we use to automate and optimize your workflows
-            </p>
-          </div>
+				<section id="about" className="relative py-24">
+					<div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.14),transparent_60%)] bg-fixed" />
+					<div className="mx-auto max-w-6xl px-6">
+						<div className="grid gap-12 lg:grid-cols-[1.1fr,0.9fr]">
+							<div>
+								<span className="text-xs font-semibold uppercase tracking-[0.45em] text-slate-200/80">about</span>
+								<h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">Partners embedded alongside your teams</h2>
+								<p className="mt-4 text-sm text-slate-200/70">
+									We blend consulting, engineering, and enablement crews so your people learn while delivering. Engagements are transparent, co-authored, and measured by tangible business outcomes.
+								</p>
+								<div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+									{aboutMetrics.map(({ value, label }) => (
+										<div key={label} className="glass-panel-light border border-white/15 px-4 py-5 text-center">
+											<span className="text-2xl font-semibold text-white">{value}</span>
+											<p className="mt-2 text-xs text-slate-200/70">{label}</p>
+										</div>
+									))}
+								</div>
+							</div>
+							<div className="glass-panel border border-white/15 p-8">
+								<h3 className="text-lg font-semibold text-white">How we work</h3>
+								<p className="mt-3 text-sm text-slate-200/75">
+									We build multidisciplinary pods that bring strategy, data, engineering, and change management under one roof. Every engagement is anchored to OKRs we agree on together.
+								</p>
+								<ul className="mt-6 space-y-3 text-sm text-slate-100/80">
+									<li>Discovery sprints surface blockers, map systems, and quantify the opportunity.</li>
+									<li>Delivery waves bring iterative releases with embedded enablement for client teams.</li>
+									<li>Runway plans ensure ownership transitions smoothly with playbooks and instrumentation.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Automation & Integration</h3>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <Code className="h-6 w-6 text-blue-600 mt-1 mr-3" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Custom API Development</h4>
-                    <p className="text-gray-600">RESTful APIs and microservices for seamless system integration</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Database className="h-6 w-6 text-green-600 mt-1 mr-3" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Database Optimization</h4>
-                    <p className="text-gray-600">PostgreSQL, MongoDB, and cloud databases for optimal performance</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Zap className="h-6 w-6 text-yellow-600 mt-1 mr-3" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Workflow Automation</h4>
-                    <p className="text-gray-600">Python, Node.js, and cloud functions for process automation</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Globe className="h-6 w-6 text-purple-600 mt-1 mr-3" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Web Applications</h4>
-                    <p className="text-gray-600">React, Next.js, and modern frameworks for responsive interfaces</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+				<section id="team" className="relative py-24">
+					<div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(236,72,153,0.14),transparent_60%)] bg-fixed" />
+					<div className="mx-auto max-w-6xl px-6">
+						<div className="text-center">
+							<span className="text-xs font-semibold uppercase tracking-[0.45em] text-rose-200/80">team</span>
+							<h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">Leaders wired for AI-first delivery</h2>
+							<p className="mx-auto mt-3 max-w-2xl text-sm text-slate-200/70">
+								Hands-on practitioners who understand capital delivery constraints, enterprise architecture, and the human side of change.
+							</p>
+						</div>
+						<div className="mt-12 grid gap-6 md:grid-cols-3">
+							{team.map(({ initials, name, role, bio, tags }) => (
+								<article key={name} className="glass-panel-light border border-white/15 p-6 text-center">
+									<div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-linear-to-br from-sky-500/30 to-indigo-500/20 text-2xl font-semibold text-white">
+										{initials}
+									</div>
+									<h3 className="mt-6 text-lg font-semibold text-white">{name}</h3>
+									<p className="text-sm font-medium text-slate-200/70">{role}</p>
+									<p className="mt-3 text-sm text-slate-200/70">{bio}</p>
+									<div className="mt-4 flex flex-wrap justify-center gap-2 text-xs text-slate-100/75">
+										{tags.map((tag) => (
+											<span key={tag} className="rounded-full border border-white/20 px-3 py-1">
+												{tag}
+											</span>
+										))}
+									</div>
+								</article>
+							))}
+						</div>
+					</div>
+				</section>
 
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">Popular Integrations</h3>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-4 bg-gray-50 rounded-lg">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <Building2 className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <p className="text-sm font-medium text-gray-900">Autodesk Suite</p>
-                </div>
-                <div className="text-center p-4 bg-gray-50 rounded-lg">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <BarChart3 className="h-6 w-6 text-green-600" />
-                  </div>
-                  <p className="text-sm font-medium text-gray-900">Microsoft Project</p>
-                </div>
-                <div className="text-center p-4 bg-gray-50 rounded-lg">
-                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <Cloud className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <p className="text-sm font-medium text-gray-900">AWS/Azure</p>
-                </div>
-                <div className="text-center p-4 bg-gray-50 rounded-lg">
-                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <Database className="h-6 w-6 text-orange-600" />
-                  </div>
-                  <p className="text-sm font-medium text-gray-900">BIM 360</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+				<section id="testimonials" className="relative py-24">
+					<div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.16),transparent_60%)] bg-fixed" />
+					<div className="mx-auto max-w-6xl px-6">
+						<div className="text-center">
+							<span className="text-xs font-semibold uppercase tracking-[0.45em] text-blue-200/80">testimonials</span>
+							<h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">Impact felt across the programme lifecycle</h2>
+						</div>
+						<div className="mt-12 grid gap-6 md:grid-cols-3">
+							{testimonials.map(({ quote, name, role }) => (
+								<blockquote key={name} className="glass-panel-light border border-white/15 p-6">
+									<p className="text-sm text-slate-100/85">&quot;{quote}&quot;</p>
+									<footer className="mt-5 text-sm font-semibold text-white">{name}</footer>
+									<div className="text-xs text-slate-200/70">{role}</div>
+								</blockquote>
+							))}
+						</div>
+					</div>
+				</section>
 
-      {/* Team Section */}
-      <section id="team" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Experienced professionals dedicated to transforming your AEC operations
-            </p>
-          </div>
+				<section id="case-studies" className="relative py-24">
+					<div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(74,222,128,0.16),transparent_60%)] bg-fixed" />
+					<div className="mx-auto max-w-6xl px-6">
+						<div className="text-center">
+							<span className="text-xs font-semibold uppercase tracking-[0.45em] text-emerald-200/80">case studies</span>
+							<h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">Programmes transformed end-to-end</h2>
+							<p className="mx-auto mt-3 max-w-3xl text-sm text-slate-200/75">
+								From rapid discovery to scaled roll-outs, our teams de-risk ambitious initiatives and leave clients with the playbooks to sustain momentum.
+							</p>
+						</div>
+						<div className="mt-12 grid gap-6 md:grid-cols-3">
+							{projects.map(({ client, title, result }) => (
+								<article key={client} className="glass-panel-light border border-white/15 p-6 text-left">
+									<div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
+										<span>{client}</span>
+										<LineChart className="h-4 w-4 text-emerald-300" />
+									</div>
+									<h3 className="mt-5 text-lg font-semibold text-white">{title}</h3>
+									<p className="mt-3 text-sm text-slate-200/75">{result}</p>
+								</article>
+							))}
+						</div>
+					</div>
+				</section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-32 h-32 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-4xl font-bold text-white">JS</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">John Smith</h3>
-              <p className="text-blue-600 font-medium mb-3">Founder & Lead Consultant</p>
-              <p className="text-gray-600 text-sm mb-4">
-                15+ years in AEC technology. Expert in BIM implementation and workflow automation. 
-                Former Autodesk Solutions Architect.
-              </p>
-              <div className="flex justify-center space-x-2">
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">BIM</span>
-                <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">Automation</span>
-                <span className="px-3 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Leadership</span>
-              </div>
-            </div>
+				<section id="resources" className="relative py-24">
+					<div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.14),transparent_65%)] bg-fixed" />
+					<div className="mx-auto max-w-6xl px-6">
+						<div className="text-center">
+							<span className="text-xs font-semibold uppercase tracking-[0.45em] text-sky-200/80">resources</span>
+							<h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">Insights to accelerate your next decision</h2>
+						</div>
+						<div className="mt-12 grid gap-6 md:grid-cols-3">
+							{resources.map(({ title, description, tag }) => (
+								<a
+									key={title}
+									href="#contact"
+									className="group glass-panel-light block border border-white/15 p-6 transition hover:border-white/30"
+								>
+									<span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em] text-white/70">
+										{tag}
+										<ArrowUpRight className="h-3.5 w-3.5 text-sky-200 transition group-hover:-translate-y-px group-hover:translate-x-px" />
+									</span>
+									<h3 className="mt-5 text-lg font-semibold text-white">{title}</h3>
+									<p className="mt-3 text-sm text-slate-200/70">{description}</p>
+								</a>
+							))}
+						</div>
+					</div>
+				</section>
 
-            <div className="text-center">
-              <div className="w-32 h-32 bg-gradient-to-br from-green-400 to-green-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-4xl font-bold text-white">MJ</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Maria Johnson</h3>
-              <p className="text-blue-600 font-medium mb-3">Senior Technology Consultant</p>
-              <p className="text-gray-600 text-sm mb-4">
-                Full-stack developer with expertise in cloud architecture and API development. 
-                Specializes in custom AEC software solutions.
-              </p>
-              <div className="flex justify-center space-x-2">
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Cloud</span>
-                <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">APIs</span>
-                <span className="px-3 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">DevOps</span>
-              </div>
-            </div>
+				<section id="contact" className="relative py-24">
+					<div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_right,rgba(244,114,182,0.14),transparent_60%)] bg-fixed" />
+					<div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[1.1fr,0.9fr]">
+						<div className="glass-panel border border-white/15 p-8">
+							<span className="text-xs font-semibold uppercase tracking-[0.45em] text-rose-200/80">engage</span>
+							<h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">Ready to explore your roadmap?</h2>
+							<p className="mt-4 text-sm text-slate-200/75">
+								Tell us about your challenges and we will curate a working session with the right specialists across delivery, data, and change.
+							</p>
+							<ul className="mt-6 space-y-3 text-sm text-slate-100/80">
+								<li>Assessment of current tooling and data architecture.</li>
+								<li>Prioritised roadmap with ROI guardrails and delivery options.</li>
+								<li>Access to our accelerator library and enablement catalogue.</li>
+							</ul>
+						</div>
+						<div className="glass-panel border border-white/15 p-8">
+							<ContactForm />
+						</div>
+					</div>
+				</section>
 
-            <div className="text-center">
-              <div className="w-32 h-32 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-4xl font-bold text-white">DW</span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">David Wilson</h3>
-              <p className="text-blue-600 font-medium mb-3">Project Management Specialist</p>
-              <p className="text-gray-600 text-sm mb-4">
-                Certified PMP with extensive experience in construction project management. 
-                Expert in implementing digital project workflows.
-              </p>
-              <div className="flex justify-center space-x-2">
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">PMP</span>
-                <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">Construction</span>
-                <span className="px-3 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Agile</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+				<section id="chatbot" className="relative pb-24">
+					<div className="mx-auto max-w-6xl px-6">
+						<div className="glass-panel border border-white/15 p-8">
+							<div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+								<div>
+									<span className="text-xs font-semibold uppercase tracking-[0.45em] text-slate-200/80">assistant</span>
+									<h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">Try the delivery copilot</h2>
+									<p className="mt-3 max-w-xl text-sm text-slate-200/75">
+										Ask questions about our capabilities, discuss integration scenarios, or simulate stakeholder updates with the embedded chatbot.
+									</p>
+								</div>
+								<div className="rounded-2xl border border-white/10 bg-black/40 p-4 lg:min-w-[320px]">
+									<Chatbot />
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
 
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Client Testimonials</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Hear what our clients say about our services and impact
-            </p>
-          </div>
+			<footer className="border-t border-white/10 bg-black/60 py-10 text-sm text-slate-200/60 backdrop-blur">
+				<div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 sm:flex-row sm:items-center sm:justify-between">
+					<div>
+						<div className="flex items-center gap-2 text-white/80">
+							<div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-sky-200">
+								<Building2 className="h-4.5 w-4.5" />
+							</div>
+							<span className="text-sm font-semibold tracking-wide">AEC Consultancy</span>
+						</div>
+						<p className="mt-3 max-w-sm text-xs text-slate-200/70">
+							Specialists in data, automation, and AI for built environment leaders. We help teams ship outcomes faster while building lasting capability.
+						</p>
+					</div>
+					<div className="flex flex-wrap gap-4 text-xs text-slate-200/70">
+						<a href="#services" className="transition hover:text-white/90">Services</a>
+						<a href="#solutions" className="transition hover:text-white/90">Solutions</a>
+						<a href="#case-studies" className="transition hover:text-white/90">Case studies</a>
+						<a href="#resources" className="transition hover:text-white/90">Resources</a>
+						<a href="#contact" className="transition hover:text-white/90">Contact</a>
+					</div>
+				</div>
+			</footer>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-600 mb-4">
-                "The BIM implementation transformed our project delivery. We reduced design errors by 40% 
-                and improved collaboration across all teams. Outstanding service!"
-              </p>
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                  <span className="text-blue-600 font-semibold">AS</span>
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900">Alex Thompson</p>
-                  <p className="text-sm text-gray-600">CEO, Thompson Architects</p>
-                </div>
-              </div>
-            </div>
+			<div className="pointer-events-none fixed inset-0 -z-20 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.25),transparent_55%),radial-gradient(circle_at_80%_20%,rgba(56,189,248,0.18),transparent_55%),radial-gradient(circle_at_50%_80%,rgba(236,72,153,0.16),transparent_55%)] opacity-70" />
+			<div className="pointer-events-none fixed inset-0 -z-30 bg-slate-950" />
+			</div>
+		);
+		}
 
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-600 mb-4">
-                "Their automation solutions saved us 20 hours per week on repetitive tasks. 
-                The ROI was evident within the first month. Highly recommended!"
-              </p>
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                  <span className="text-green-600 font-semibold">SC</span>
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900">Sarah Chen</p>
-                  <p className="text-sm text-gray-600">Operations Director, BuildCorp</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-600 mb-4">
-                "Professional, knowledgeable, and results-driven. They helped us modernize our 
-                entire workflow and significantly improve project efficiency."
-              </p>
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
-                  <span className="text-purple-600 font-semibold">MR</span>
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900">Michael Rodriguez</p>
-                  <p className="text-sm text-gray-600">CTO, Engineering Solutions Inc.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Real-world examples of our successful implementations
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
-              <div className="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                <Building2 className="h-16 w-16 text-white" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Metropolitan Hospital Complex</h3>
-                <p className="text-gray-600 mb-4">
-                  Complete BIM implementation for a 500,000 sq ft medical facility. 
-                  Integrated 15+ disciplines and reduced construction time by 25%.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">BIM 360</span>
-                  <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">Revit</span>
-                  <span className="px-3 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Navisworks</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">Healthcare • 18 months</span>
-                  <span className="text-sm font-semibold text-green-600">25% Time Saved</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
-              <div className="h-48 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
-                <Zap className="h-16 w-16 text-white" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Smart Office Automation</h3>
-                <p className="text-gray-600 mb-4">
-                  Custom workflow automation for a 50-person architecture firm. 
-                  Automated document processing and project tracking systems.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Python</span>
-                  <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">APIs</span>
-                  <span className="px-3 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Cloud</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">Commercial • 6 months</span>
-                  <span className="text-sm font-semibold text-green-600">40% Efficiency Gain</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
-              <div className="h-48 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
-                <Cloud className="h-16 w-16 text-white" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Cloud Infrastructure Migration</h3>
-                <p className="text-gray-600 mb-4">
-                  Migrated legacy systems to AWS for a construction company. 
-                  Implemented scalable cloud architecture with 99.9% uptime.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">AWS</span>
-                  <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">Docker</span>
-                  <span className="px-3 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Kubernetes</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">Construction • 12 months</span>
-                  <span className="text-sm font-semibold text-green-600">99.9% Uptime</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
-              <div className="h-48 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
-                <BarChart3 className="h-16 w-16 text-white" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Project Management Platform</h3>
-                <p className="text-gray-600 mb-4">
-                  Custom project management solution for engineering firm. 
-                  Real-time tracking, resource management, and automated reporting.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">React</span>
-                  <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">Node.js</span>
-                  <span className="px-3 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">PostgreSQL</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">Engineering • 9 months</span>
-                  <span className="text-sm font-semibold text-green-600">60% Faster Reporting</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-16 bg-blue-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Transform Your AEC Operations?</h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Let's discuss how we can help streamline your workflows and boost efficiency
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                Schedule Consultation
-              </button>
-              <button className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
-                Download Case Study
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center mb-4">
-                <Building2 className="h-8 w-8 text-blue-400" />
-                <span className="ml-2 text-xl font-bold">AEC Consultancy</span>
-              </div>
-              <p className="text-gray-400 text-sm">
-                Transforming AEC operations through innovative technology solutions and expert consulting.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Services</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>BIM Implementation</li>
-                <li>Workflow Automation</li>
-                <li>Cloud Solutions</li>
-                <li>Project Management</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Company</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>About Us</li>
-                <li>Our Team</li>
-                <li>Case Studies</li>
-                <li>Contact</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Contact</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>info@aecconsultancy.com</li>
-                <li>+1 (555) 123-4567</li>
-                <li>123 Business Ave, Suite 100</li>
-                <li>New York, NY 10001</li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2024 AEC Consultancy. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
-}
